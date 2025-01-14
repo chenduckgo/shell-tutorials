@@ -102,6 +102,65 @@ Linux系统加载Shell配置文件中定义的变量，共享给所有Shell程�
 * `$$`
   * 当前shell环境的进程ID
 
+### 系统环境变量
+当用户进入shell环境时会加载全局配置文件`/etc/profile`中的环境变量，供给所有shell程序使用
+* 定义环境变量：`export VAR_NAME=value`
+* 重载配置文件：`source /etc/profile`
+
+## Shell工作环境
+用户进入Linux系统，就会初始化shell环境，会加载全局和个人的配置文件中的环境变量。
+
+### 交互式shell
+与用户交互，用户输入一个命令，shell环境立刻反馈响应
+
+### 非交互式shell
+不需要用户参与就可以执行多个命令，如脚本文件
+
+### shell登录环境
+需要用户名、密码登录的shell环境
+
+### shell非登录
+不需要用户名、密码的shell环境或执行脚本文件
+
+## 环境变量的初始化流程
+
+### shell登录环境执行脚本文件语法
+`sh/bash -l/--login 脚本文件`
+
+### shell非登录环境执行脚本语法
+```
+bash
+sh/bash 脚本文件
+```
+### 识别登录和非登录环境
+`echo $0`
+* `-bash`：登录环境
+* `bash`：非登录环境
+
+### 切换shell环境
+* 使用用户名密码登录的都是shell登录环境
+* su切换用户
+  * `su user -l/--login`：登录环境
+  * `su user`：非登录环境
+* `bash`切换
+  * `bash`：非登录环境
+  * `bash/sh -l/--login 脚本文件`：登录环境
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
